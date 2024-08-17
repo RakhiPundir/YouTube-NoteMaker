@@ -1,0 +1,8 @@
+pytube==12.1.0
+opencv-python==4.8.0.74
+pillow==10.0.0
+python-docx==0.8.11
+streamlit==1.24.0
+numpy==1.25.1
+googletrans==4.0.0-rc1
+yt-dlp

@@ -1,0 +1,1027 @@
+Webvtt
+KIND: CAPTIONS
+Language: KO
+
+00:00:00.450 --> 00:00:04.340
+This video introduces the Pulse Doppler Radar.
+
+00:00:04.340 --> 00:00:07.470
+Specifically, using a series of radar pulses
+
+00:00:07.490 --> 00:00:11.370
+Let's explain how to judge distance and eye speed.
+
+00:00:11.370 --> 00:00:13.370
+I think it will be really fun.
+
+00:00:13.370 --> 00:00:16.000
+Through the explanation using graphics, you
+
+00:00:16.010 --> 00:00:19.000
+I hope you have the foundation you need to build your knowledge.
+
+00:00:19.000 --> 00:00:21.770
+So please watch the video to the end.
+
+00:00:21.770 --> 00:00:22.686
+I am Brian.
+
+00:00:22.686 --> 00:00:24.770
+Welcome to Matlab Tech Talk.
+
+00:00:26.550 --> 00:00:29.521
+As the name suggests, the pulse radar system
+
+00:00:29.520 --> 00:00:32.266
+Export short bursts or pulses of high energy waveforms.
+
+00:00:32.400 --> 00:00:35.520
+And listening to a signal where the receiver is reflected
+
+00:00:35.525 --> 00:00:37.330
+Long silence continues.
+
+00:00:37.330 --> 00:00:42.200
+The waveform sent to the pulse radar will look like this.
+
+00:00:42.200 --> 00:00:44.350
+At first, the transmitter is silent and the signal
+
+00:00:44.360 --> 00:00:46.530
+There is a period of time not transmitted.
+
+00:00:46.530 --> 00:00:48.850
+Subsequently, when the pulse begins, the transmitter
+
+00:00:48.860 --> 00:00:51.330
+Start sending the IQ signal.
+
+00:00:51.330 --> 00:00:55.930
+There are various modulation systems that can be used in the pulse,
+
+00:00:55.930 --> 00:01:00.400
+Here it shows a fixed frequency of 2.8GHz.
+
+00:01:00.400 --> 00:01:04.800
+Therefore, a 2.8GHz signal is transmitted constant during the pulse.
+
+00:01:05.600 --> 00:01:07.650
+Radar is called pulse width
+
+00:01:07.670 --> 00:01:10.130
+Send it for a certain time.
+
+00:01:10.130 --> 00:01:14.930
+This example uses 1 microsecond pulse width.
+
+00:01:15.660 --> 00:01:19.022
+Because the signal vibrates 2,800 times within this pulse,
+
+00:01:19.022 --> 00:01:22.060
+This resolution looks like a solid block.
+
+00:01:22.060 --> 00:01:25.310
+Instead of showing the signal itself, the pulse
+
+00:01:25.320 --> 00:01:29.130
+I will express it as the outline of the signal amplitude.
+
+00:01:29.130 --> 00:01:33.420
+As the pulse is turned on and turned off, the amplitude of the signal is rectangular.
+
+00:01:33.430 --> 00:01:39.130
+Because it is formed, this fixed frequency system is called rectangular pulse.
+
+00:01:40.060 --> 00:01:43.474
+Now the pulse is released from the pulse radar system.
+
+00:01:43.474 --> 00:01:44.846
+Reflected from the object,
+
+00:01:44.846 --> 00:01:48.800
+The following pulse must be returned to the radar before the pulse is transmitted.
+
+00:01:48.800 --> 00:01:50.650
+Which pulse of Echo belongs to
+
+00:01:50.660 --> 00:01:53.000
+To avoid ambiguous.
+
+00:01:53.000 --> 00:01:55.460
+Echo always belongs to the pulse just sent.
+
+00:01:55.460 --> 00:01:57.181
+But for this reason,
+
+00:01:57.181 --> 00:02:00.768
+Like the airport radar, it can work on a long distance
+
+00:02:00.768 --> 00:02:02.425
+When designing a radar
+
+00:02:02.425 --> 00:02:05.896
+So that you can take into account the speed of light between objects
+
+00:02:05.896 --> 00:02:09.200
+You should have enough time between the pulses.
+
+00:02:11.400 --> 00:02:15.410
+Here, every 1 milliseconds, that is, 1 kHz pulse
+
+00:02:15.420 --> 00:02:20.330
+I am exporting the pulse to the repeated frequency (PRF).
+
+00:02:21.400 --> 00:02:25.840
+When the PRF is 1kHz and the pulse width is 1 micromecro
+
+00:02:25.850 --> 00:02:30.800
+The maximum effective distance of this system is less than 150 km.
+
+00:02:30.800 --> 00:02:35.860
+Or, the light is 999 microchoed to objects to objects
+
+00:02:35.870 --> 00:02:41.460
+You can also think about moving about 300 km.
+
+00:02:41.460 --> 00:02:44.060
+This is the dead time between the pulses.
+
+00:02:45.800 --> 00:02:48.832
+A single object in the radar view
+
+00:02:48.832 --> 00:02:52.317
+Assuming that it is less than 150km,
+
+00:02:52.317 --> 00:02:56.660
+Each pulse will have the relevant eco pulse.
+
+00:02:56.660 --> 00:02:58.672
+As I mentioned in the last video,
+
+00:02:58.672 --> 00:03:01.041
+Because many power is lost in the environment
+
+00:03:01.041 --> 00:03:03.800
+These signals are much weaker than transmission pulses.
+
+00:03:03.800 --> 00:03:06.620
+Also, if the object has a gaze speed
+
+00:03:06.640 --> 00:03:09.930
+The frequency of the reflex signal moves slightly.
+
+00:03:09.930 --> 00:03:11.950
+If you think of the FMCW radar,
+
+00:03:11.950 --> 00:03:14.715
+Using a very small frequency movement
+
+00:03:14.715 --> 00:03:17.060
+I made a bit frequency.
+
+00:03:17.060 --> 00:03:20.660
+And I was able to find speed there.
+
+00:03:20.660 --> 00:03:24.926
+This time, this pulse Doppler radar system judges speed
+
+00:03:24.926 --> 00:03:27.583
+It will take a slightly different approach.
+
+00:03:27.583 --> 00:03:31.186
+In this case, the frequency movement is not directly measured
+
+00:03:31.186 --> 00:03:33.800
+Check the phase movement between the pulses.
+
+00:03:33.800 --> 00:03:36.460
+Before dealing with this
+
+00:03:36.460 --> 00:03:39.530
+Let's talk about street judgments.
+
+00:03:40.600 --> 00:03:42.760
+Enlarge one of the receiving signals
+
+00:03:42.770 --> 00:03:45.530
+If you look at it, it can look like this.
+
+00:03:45.530 --> 00:03:49.060
+After the pulse is sent, the receiver begins to hear.
+
+00:03:49.060 --> 00:03:51.330
+Before the pulse comes back,
+
+00:03:51.340 --> 00:03:54.660
+Some noise will occur from the environment.
+
+00:03:54.660 --> 00:03:57.280
+When the reflex signal returns, the reflex signal
+
+00:03:57.290 --> 00:03:59.800
+Much bigger than noise.
+
+00:03:59.800 --> 00:04:01.690
+Now we have the time and pulse sending the pulse
+
+00:04:01.700 --> 00:04:04.130
+You can judge the time between the return time.
+
+00:04:04.730 --> 00:04:08.500
+The distance to the object is during that time
+
+00:04:08.510 --> 00:04:13.060
+Determine the round -trip distance that you have moved.
+
+00:04:13.060 --> 00:04:15.930
+There are two things I want to emphasize here.
+
+00:04:15.930 --> 00:04:18.720
+First, the pulse is not a single point, but the width of time
+
+00:04:18.730 --> 00:04:21.660
+In this case, it is 1 microsecond.
+
+00:04:21.660 --> 00:04:23.401
+And the light is during that time
+
+00:04:23.401 --> 00:04:25.400
+You can move about 300m.
+
+00:04:25.400 --> 00:04:28.042
+If you want a higher accuracy, the pulse is exactly
+
+00:04:28.042 --> 00:04:31.431
+How to check the time to return to less than 1 microclocho
+
+00:04:31.431 --> 00:04:33.060
+It is good to think about it.
+
+00:04:33.060 --> 00:04:36.417
+As you can see here, the object is close and reflected
+
+00:04:36.417 --> 00:04:37.968
+If the signal power is really high
+
+00:04:37.968 --> 00:04:40.660
+It will not be so difficult to find the pulse.
+
+00:04:40.660 --> 00:04:42.940
+But as you know, the signal power
+
+00:04:42.950 --> 00:04:46.330
+The distance to the object drops by 4 square.
+
+00:04:46.330 --> 00:04:48.678
+So the more the object is, the more
+
+00:04:48.678 --> 00:04:52.571
+The signal becomes difficult to get out of the noise.
+
+00:04:52.571 --> 00:04:56.582
+So the second thing I want to talk about
+
+00:04:56.582 --> 00:05:02.000
+Signal vs. noise ratio and threshold to detect objects.
+
+00:05:02.000 --> 00:05:04.821
+When setting up a critical value for detection potential
+
+00:05:04.821 --> 00:05:08.763
+Random noise spike is constantly an object
+
+00:05:08.763 --> 00:05:12.359
+There is a low probability of false detection so that
+
+00:05:12.359 --> 00:05:18.130
+Set the threshold to a level that is not high enough to miss the signal completely.
+
+00:05:18.130 --> 00:05:21.488
+A certain false alarm rate, short short, CFAR is necessary.
+
+00:05:21.488 --> 00:05:23.947
+To achieve the probability of false alarm
+
+00:05:23.947 --> 00:05:26.608
+Used to set this threshold value
+
+00:05:26.608 --> 00:05:29.800
+This is a common form of adaptive algorithm.
+
+00:05:30.730 --> 00:05:34.996
+In order to increase the possibility of detection and reduce the possibility of false alarms
+
+00:05:34.996 --> 00:05:38.198
+How to amplify the signal based on noise
+
+00:05:38.198 --> 00:05:40.460
+It is clear that you have to find it.
+
+00:05:40.460 --> 00:05:44.600
+One way is to use a matching filter.
+
+00:05:45.600 --> 00:05:49.268
+A longer and more detailed explanation of the matching filter
+
+00:05:49.268 --> 00:05:53.530
+I left the link below, but let's briefly summarize it here.
+
+00:05:54.130 --> 00:05:57.200
+We know the pattern of the transmitted pulse.
+
+00:05:57.200 --> 00:05:59.400
+In this case, it's a rectangular pulse.
+
+00:05:59.400 --> 00:06:01.854
+In this equation, it is expressed as a filter H.
+
+00:06:01.854 --> 00:06:04.964
+Also, because the pulse is reflected by the object,
+
+00:06:04.964 --> 00:06:07.011
+The same when the pulse is received
+
+00:06:07.011 --> 00:06:09.730
+I know it will be a common shape.
+
+00:06:09.860 --> 00:06:13.530
+And as mentioned earlier, there will be noise.
+
+00:06:13.530 --> 00:06:19.260
+But considering the signal itself, it is a rectangular shape.
+
+00:06:19.660 --> 00:06:23.200
+The receiving signal is X in this equation.
+
+00:06:23.200 --> 00:06:28.410
+Multiply the H, which is reversed, to X, and then add up the results.
+
+00:06:28.420 --> 00:06:34.530
+It can amplify the area of ​​strong correlation between H and X.
+
+00:06:34.530 --> 00:06:37.060
+This is the way in graphics.
+
+00:06:37.060 --> 00:06:39.396
+We overturned the transmission pulse from time.
+
+00:06:39.396 --> 00:06:42.049
+In this case, it is symmetrical along this axis
+
+00:06:42.049 --> 00:06:43.130
+Exactly the same.
+
+00:06:43.130 --> 00:06:45.030
+Then this is a sampled reception
+
+00:06:45.040 --> 00:06:47.600
+Multiply with the signal and combine the results.
+
+00:06:48.330 --> 00:06:53.000
+This X in the center of the filter is a total value,
+
+00:06:53.020 --> 00:06:58.460
+The current time will actually be at the end of this right.
+
+00:06:58.460 --> 00:07:01.530
+However, in the process of processing, the filter is generally considered,
+
+00:07:01.530 --> 00:07:04.656
+As you can see here, the peak of the reception pulse
+
+00:07:04.656 --> 00:07:06.660
+Do not move within time.
+
+00:07:06.660 --> 00:07:08.560
+This is used to judge the distance
+
+00:07:08.570 --> 00:07:10.600
+Remember that it is the location of the peak.
+
+00:07:10.600 --> 00:07:15.000
+Therefore, it should be in the same position but narrower.
+
+00:07:15.800 --> 00:07:17.730
+The result is 0 when you start here.
+
+00:07:17.730 --> 00:07:20.168
+At this point, there is no reception signal,
+
+00:07:20.168 --> 00:07:21.930
+There is no noise perfectly.
+
+00:07:21.930 --> 00:07:25.730
+So multiply this value to the pulse.
+
+00:07:26.330 --> 00:07:29.330
+Now repeat the moving the filter to the next sample time.
+
+00:07:29.330 --> 00:07:35.200
+It keeps repeating the entire received signal until it goes through.
+
+00:07:36.330 --> 00:07:41.070
+This work is a triangle with a wide rectangles.
+
+00:07:41.080 --> 00:07:46.600
+It has the effect of amplifying the signal and making the signal narrower.
+
+00:07:46.600 --> 00:07:50.440
+This is why the matching filter is also called pulse compression.
+
+00:07:50.450 --> 00:07:54.460
+Because the wide pulse is compressed into a narrow pulse.
+
+00:07:54.930 --> 00:07:59.198
+This kind of filter amplifies the signal more than noise.
+
+00:07:59.198 --> 00:08:03.324
+While there is a perfect correlation between the pulse and the receiving signal,
+
+00:08:03.324 --> 00:08:06.860
+This is because the correlation with random noise is low.
+
+00:08:07.130 --> 00:08:09.717
+Returning to the return signal with many noise,
+
+00:08:09.717 --> 00:08:12.792
+If you apply a fixed filter to the signal, the noise is actually
+
+00:08:12.792 --> 00:08:15.981
+You can see that it is amplified to some extent.
+
+00:08:15.981 --> 00:08:18.400
+Because we combine multiple values.
+
+00:08:18.400 --> 00:08:20.720
+However, the filter matches the pulse
+
+00:08:20.730 --> 00:08:23.660
+Because of this, the sum is greater than the pulse,
+
+00:08:23.660 --> 00:08:27.460
+The signal gain increases compared to noise gains.
+
+00:08:27.460 --> 00:08:29.760
+But the important thing is that SNR has been improved.
+
+00:08:29.770 --> 00:08:32.530
+In addition, because the pulse itself has become narrower
+
+00:08:32.530 --> 00:08:36.130
+It's easy to find the exact peak.
+
+00:08:36.800 --> 00:08:39.250
+Now, consider the processing gain of the processing filter
+
+00:08:39.270 --> 00:08:42.330
+Heard detection can be increased.
+
+00:08:42.330 --> 00:08:44.303
+As you can see, between noise and signal
+
+00:08:44.303 --> 00:08:46.890
+You can see that there are more separation,
+
+00:08:46.890 --> 00:08:49.930
+This potentially lower false detection rates.
+
+00:08:51.200 --> 00:08:54.140
+However, even if the pulse compression is used, the signal peak
+
+00:08:54.150 --> 00:08:57.730
+There is no guarantee that it will exceed the critical value for detection.
+
+00:08:57.730 --> 00:09:00.100
+Therefore, these signals are amplified from noise.
+
+00:09:00.110 --> 00:09:02.930
+You may have to find another way you can.
+
+00:09:02.930 --> 00:09:06.778
+One way is to integrate multiple pulses into one line
+
+00:09:06.778 --> 00:09:10.510
+Until the signal rises above the detectable threshold.
+
+00:09:10.510 --> 00:09:13.600
+It is to combine all the energy of each pulse.
+
+00:09:14.800 --> 00:09:16.930
+This is the way in graphics.
+
+00:09:16.930 --> 00:09:18.770
+This is in the receiver after pulse compression
+
+00:09:18.780 --> 00:09:21.400
+Suppose it is the amount of signal power to be identified.
+
+00:09:22.060 --> 00:09:25.800
+But this signal is covered by noise.
+
+00:09:25.800 --> 00:09:30.400
+This is the actual reception power after the matching filter.
+
+00:09:30.400 --> 00:09:32.556
+If you look at the entire reception signal
+
+00:09:32.556 --> 00:09:36.930
+It's hard to say exactly where the pulse is.
+
+00:09:36.930 --> 00:09:39.670
+But after storing this signal in a buffer, another pulse
+
+00:09:39.690 --> 00:09:42.860
+There is hope because you can wait until you come back.
+
+00:09:43.260 --> 00:09:46.060
+The second pulse is also covered by noise.
+
+00:09:46.060 --> 00:09:48.800
+It is still difficult to see the signal.
+
+00:09:48.800 --> 00:09:53.240
+However, if you combine these two pulses, you can get noise from this integrated signal.
+
+00:09:53.250 --> 00:09:58.000
+You can see that there are some obvious peaks out.
+
+00:09:58.000 --> 00:09:59.827
+The reason this is effective
+
+00:09:59.827 --> 00:10:03.330
+This is because noise has no correlation between pulses.
+
+00:10:03.330 --> 00:10:05.339
+At a specific point of the first pulse
+
+00:10:05.339 --> 00:10:08.126
+Even if noise was abnormally high
+
+00:10:08.126 --> 00:10:12.130
+At the next point, it can be randomly low.
+
+00:10:12.130 --> 00:10:14.950
+When they combine,
+
+00:10:14.960 --> 00:10:17.930
+You can get an average increase for the average.
+
+00:10:18.200 --> 00:10:22.400
+But the signal from the pulse to the pulse has a correlation.
+
+00:10:22.400 --> 00:10:24.620
+So every time I combine other pulses
+
+00:10:24.630 --> 00:10:27.260
+Always add the same amount of signal.
+
+00:10:28.060 --> 00:10:31.740
+The signal is more than a critical value for detection
+
+00:10:31.750 --> 00:10:37.000
+You can continue to integrate the pulse until you go up.
+
+00:10:37.000 --> 00:10:39.860
+At this point, you can find the time of this peak.
+
+00:10:39.870 --> 00:10:43.530
+And you can judge the distance from it.
+
+00:10:44.460 --> 00:10:46.192
+Here, the distance to the object
+
+00:10:46.192 --> 00:10:49.930
+Note that it does not change depending on the pulse.
+
+00:10:49.930 --> 00:10:54.000
+This is because the peak is expected to be in the same position every time.
+
+00:10:54.000 --> 00:10:57.390
+This assumption is quite effective.Here
+
+00:10:57.400 --> 00:11:01.660
+This is because the time between the pulses is one second.
+
+00:11:01.660 --> 00:11:04.800
+10 pulses are separated by 9 millimeters.
+
+00:11:04.800 --> 00:11:08.000
+How much can the object move in 9 milliseconds?
+
+00:11:08.000 --> 00:11:11.530
+If the object moves to 180m per second,
+
+00:11:11.540 --> 00:11:16.860
+The same as 400 miles, in which case you have moved about 1.5m.
+
+00:11:16.860 --> 00:11:19.390
+Therefore, the first pulse and the 10th pulse
+
+00:11:19.400 --> 00:11:22.330
+The round -trip distance between them is 3m longer.
+
+00:11:22.330 --> 00:11:25.800
+In the case of light speed, 3M takes about 10 nanocho.
+
+00:11:25.800 --> 00:11:28.790
+Because our pulse width is 1 micro second,
+
+00:11:28.800 --> 00:11:32.600
+The pulse will still be essentially completely aligned.
+
+00:11:33.330 --> 00:11:37.590
+Now, the integration and pulse integration narrowed the return signal and in noise
+
+00:11:37.600 --> 00:11:42.000
+I hope you understand how to help you get the signal.
+
+00:11:42.000 --> 00:11:45.190
+From here, between the transmitted pulse and the returned peak
+
+00:11:45.200 --> 00:11:48.930
+Just check the time to calculate the distance.
+
+00:11:48.930 --> 00:11:52.860
+For reference, this data is a time over the horizontal axis
+
+00:11:52.870 --> 00:11:57.330
+There is a time unit of time and vertical axis.
+
+00:11:57.330 --> 00:12:00.373
+Because the horizontal axis includes only the width of the pulse
+
+00:12:00.373 --> 00:12:05.060
+It is called high -speed time, in which case is 1 microsecond.
+
+00:12:05.060 --> 00:12:07.954
+The vertical axis is called low speed time,
+
+00:12:07.954 --> 00:12:11.460
+Because it contains longer time between the pulses
+
+00:12:11.460 --> 00:12:13.860
+In this case, it is about 9 milliseconds.
+
+00:12:13.860 --> 00:12:17.750
+When measuring the distance,
+
+00:12:17.760 --> 00:12:23.460
+But when you integrate the pulse, it crosses the low speed time axis.
+
+00:12:24.530 --> 00:12:27.933
+Now go on the street and measure the eye speed
+
+00:12:27.933 --> 00:12:32.260
+Let's look at how to use this data we collected.
+
+00:12:32.260 --> 00:12:35.780
+To this end, this low -speed time axis,
+
+00:12:35.790 --> 00:12:39.800
+We will compare data from pulse to pulse.
+
+00:12:42.000 --> 00:12:44.810
+Here's a single pulse returned
+
+00:12:44.830 --> 00:12:47.660
+Imagine it as an IQ signal.
+
+00:12:47.660 --> 00:12:49.380
+For a simple explanation, noise in the receiver
+
+00:12:49.390 --> 00:12:51.130
+I assume that it doesn't happen at all.
+
+00:12:51.130 --> 00:12:54.400
+After the pulse was transmitted, the pulse moved to the object
+
+00:12:54.410 --> 00:12:58.530
+While coming back, the reception signal is perfectly silent.
+
+00:12:58.530 --> 00:13:01.460
+Then the reflective pulse is received.
+
+00:13:01.460 --> 00:13:05.176
+Again, the time between the transmission pulse and the reception pulse is
+
+00:13:05.176 --> 00:13:07.460
+It is related to the distance of the object.
+
+00:13:07.730 --> 00:13:09.824
+If the object does not move,
+
+00:13:09.824 --> 00:13:14.130
+The distance between two continuous pulses is exactly the same.
+
+00:13:14.130 --> 00:13:16.610
+Also, the transmission signal is consistent
+
+00:13:16.620 --> 00:13:19.530
+If there is, the returned pulse will be the dynamic and isotopes.
+
+00:13:19.530 --> 00:13:23.330
+The same is true of the third pulse and the fourth pulse.
+
+00:13:23.330 --> 00:13:25.970
+Each reflected from the suspended object
+
+00:13:25.980 --> 00:13:29.260
+The returned pulse is basically the same.
+
+00:13:29.260 --> 00:13:32.855
+Therefore, compared to the point where the pulse was transmitted
+
+00:13:32.855 --> 00:13:36.969
+At the same time, the return pulse was sampled and measured
+
+00:13:36.969 --> 00:13:40.460
+Ploting the IQ value makes it look like this.
+
+00:13:41.600 --> 00:13:43.930
+Now the frequency of this new signal
+
+00:13:43.950 --> 00:13:47.130
+You can judge the speed of the reporting object.
+
+00:13:47.130 --> 00:13:49.460
+In this case, there are only two flat ships,
+
+00:13:49.460 --> 00:13:53.130
+The frequency is 0Hz and the speed is 0 miles per hour.
+
+00:13:53.730 --> 00:13:55.850
+But if the object is in the radar
+
+00:13:55.860 --> 00:13:58.660
+Let's think about what will happen if you get away.
+
+00:13:58.660 --> 00:14:01.570
+In that case, the object is second than the first pulse
+
+00:14:01.580 --> 00:14:04.860
+It will be a little farther away for the pulse.
+
+00:14:04.860 --> 00:14:07.050
+So the second pulse is the radar
+
+00:14:07.060 --> 00:14:09.660
+It takes a little longer to return.
+
+00:14:09.660 --> 00:14:14.051
+Assuming that the speed is constant for one second, the third pulse is
+
+00:14:14.051 --> 00:14:18.330
+It takes a little longer to return compared to the second pulse.
+
+00:14:18.860 --> 00:14:21.743
+Therefore, if the object moves at a certain speed,
+
+00:14:21.743 --> 00:14:24.600
+Basically, each pulse is previously pulse and
+
+00:14:24.600 --> 00:14:27.460
+It delays the same amount in time.
+
+00:14:27.860 --> 00:14:31.980
+Sampling each delayed pulse at the same relative time
+
+00:14:31.990 --> 00:14:36.530
+In essence, sampling the sending pulse at a fixed interval.
+
+00:14:36.530 --> 00:14:42.730
+This work replaces high frequency transmission signals with low frequencies.
+
+00:14:42.730 --> 00:14:45.350
+And this low frequency is exactly the object
+
+00:14:45.360 --> 00:14:48.130
+Doppler movement created by speed.
+
+00:14:48.130 --> 00:14:52.800
+So you can convert this Doppler frequency at speed.
+
+00:14:53.730 --> 00:14:56.330
+As the actual speed of the object increases
+
+00:14:56.340 --> 00:14:59.400
+The time delay between the pulses also increases,
+
+00:14:59.400 --> 00:15:02.400
+This will also increase Doppler movement.
+
+00:15:02.400 --> 00:15:04.780
+In this way, the frequency of this sampled signal.
+
+00:15:04.800 --> 00:15:08.000
+If you look at at least one point, you can estimate the speed.
+
+00:15:08.460 --> 00:15:12.300
+If the speed increases too much,
+
+00:15:12.310 --> 00:15:17.460
+Time delay increases more than half wavelength.
+
+00:15:17.460 --> 00:15:20.050
+If that happens, this method is Doppler
+
+00:15:20.060 --> 00:15:22.800
+The frequency starts to decrease again.
+
+00:15:22.800 --> 00:15:26.850
+So, exactly the delay of the semi -wavelength between the pulses
+
+00:15:26.870 --> 00:15:32.130
+The speed of generating is called the maximum effective speed of the radar.
+
+00:15:32.130 --> 00:15:35.800
+In this example, the frequency of the pulse is 2.8GHz.
+
+00:15:35.800 --> 00:15:39.400
+It has a half wavelength of about 5.5cm.
+
+00:15:39.400 --> 00:15:42.710
+The object is between the pulses or within 1 milliseconds
+
+00:15:42.730 --> 00:15:47.060
+It means that you can't move more than 5.5cm.
+
+00:15:47.060 --> 00:15:50.109
+Therefore, the maximum effective speed
+
+00:15:50.109 --> 00:15:54.730
+It is about 55m per second, or 120 miles per hour.
+
+00:15:55.800 --> 00:15:58.708
+In the end, if the speed of the object continues to increase,
+
+00:15:58.708 --> 00:16:01.646
+The delay between the pulses continues to increase
+
+00:16:01.646 --> 00:16:04.400
+It is sampled to exactly 1 wavelength.
+
+00:16:04.400 --> 00:16:05.980
+And at that point sampled
+
+00:16:05.990 --> 00:16:08.330
+The frequency of the signal becomes 0Hz again.
+
+00:16:08.330 --> 00:16:11.400
+The object doesn't seem to move.
+
+00:16:11.400 --> 00:16:13.330
+This is called radar blind speed.
+
+00:16:13.330 --> 00:16:16.080
+This speed is the essence of the transmission signal wavelength
+
+00:16:16.090 --> 00:16:19.330
+It occurs at the speed of generating drainage.
+
+00:16:21.130 --> 00:16:24.992
+When you return to this image showing the buffered return pulse,
+
+00:16:24.992 --> 00:16:28.336
+The concept of distance and eye speed described so far
+
+00:16:28.336 --> 00:16:30.060
+It can be applied together.
+
+00:16:30.060 --> 00:16:33.360
+Return across the streets across the high -speed time axis
+
+00:16:33.370 --> 00:16:37.000
+Check the peak time of the signal and judge.
+
+00:16:37.000 --> 00:16:39.440
+The two things we can do
+
+00:16:39.440 --> 00:16:42.667
+By applying a fixed filter and integrating multiple pulses
+
+00:16:42.667 --> 00:16:45.730
+It is to increase SNR and narrow the pulse.
+
+00:16:46.860 --> 00:16:49.562
+After you know where the peak is in time
+
+00:16:49.562 --> 00:16:52.280
+We sample each pulse at that time,
+
+00:16:52.280 --> 00:16:54.707
+As a result, find the frequency of the sampled signal.
+
+00:16:54.707 --> 00:16:56.860
+You can judge the speed of the object.
+
+00:16:57.800 --> 00:17:00.643
+Recall the second video of the series.
+
+00:17:00.643 --> 00:17:03.168
+Several reception antenna
+
+00:17:03.168 --> 00:17:06.460
+I told you how to use it to judge.
+
+00:17:06.460 --> 00:17:09.840
+In the case of pulse radar, the same task can be performed,
+
+00:17:09.840 --> 00:17:13.196
+Over time, several pulses are received and
+
+00:17:13.196 --> 00:17:16.600
+You can also have several reception antenna.
+
+00:17:16.600 --> 00:17:20.876
+After all, what we get is called data cube,
+
+00:17:20.876 --> 00:17:25.556
+This can be used to determine distance, gaze speed, and direction.
+
+00:17:25.556 --> 00:17:27.200
+Three axes of information.
+
+00:17:27.200 --> 00:17:29.660
+The topic of the phase array antenna, and then in the video
+
+00:17:29.680 --> 00:17:32.060
+Let's take a closer look at the data cube.
+
+00:17:32.330 --> 00:17:34.893
+Finally, the reason all this concept is really useful is
+
+00:17:34.893 --> 00:17:37.518
+Even when several objects enter the vision at the same time
+
+00:17:37.518 --> 00:17:39.460
+It works effectively.
+
+00:17:39.460 --> 00:17:41.939
+Using a pulse Doppler radar in MATLAB
+
+00:17:41.939 --> 00:17:45.208
+It shows how to judge the distance and speed of multiple objects
+
+00:17:45.208 --> 00:17:47.530
+I left two examples on the link.
+
+00:17:47.530 --> 00:17:49.794
+It would be nice to check the contents.
+
+00:17:49.794 --> 00:17:51.152
+All we just dealt with
+
+00:17:51.152 --> 00:17:53.400
+This is because we will show you in a more realistic way.
+
+00:17:53.400 --> 00:17:56.210
+In fact, if you change the detection critical value and apply the matching filter,
+
+00:17:56.230 --> 00:17:59.060
+You can see what it affects the result.
+
+00:17:59.060 --> 00:18:02.800
+And at the end, several pulses are integrated.
+
+00:18:02.800 --> 00:18:05.230
+Corresponding to three different objects
+
+00:18:05.240 --> 00:18:07.930
+You can see three peaks clearly.
+
+00:18:07.930 --> 00:18:11.900
+Other examples take a similar approach, but
+
+00:18:11.910 --> 00:18:16.060
+I go one step further to estimate the speed.
+
+00:18:16.060 --> 00:18:18.330
+I think all this concept is really cool.
+
+00:18:18.330 --> 00:18:20.310
+Through the links I provided below
+
+00:18:20.320 --> 00:18:22.660
+Please check more details.
+
+00:18:22.660 --> 00:18:24.930
+Today I will finish here.
+
+00:18:24.930 --> 00:18:27.756
+If you don't want to miss this TECH TALK video in the future,
+
+00:18:27.756 --> 00:18:29.460
+Please subscribe to this channel.
+
+00:18:29.460 --> 00:18:32.175
+Even in the control system lecture, which is my channel
+
+00:18:32.175 --> 00:18:35.460
+Please check the topic of more control theory.
+
+00:18:35.460 --> 00:18:36.860
+Thank you for watching.
+
+00:18:36.860 --> 00:18:38.860
+See you again in the next video.
+
