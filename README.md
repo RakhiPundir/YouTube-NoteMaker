@@ -25,7 +25,7 @@ Ensure you have the following installed:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/YouTube-NoteMaker.git
+   git clone https://github.com/RakhiPundir/YouTube-NoteMaker.git
    cd YouTube-NoteMaker
    ```
 
